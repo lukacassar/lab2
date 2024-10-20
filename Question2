@@ -1,0 +1,59 @@
+Exercise 2
+
+int main() {
+  float weight, value;
+  printf("Enter your weight in pounds: \n");
+  scanf("%f", &weight);
+  // Platinum is $1770 / pound
+  // 14.5 troy ounces in 1 pound
+  value = 1770.0 * weight * 14.5;
+  printf ("Your weight in platinum costs $%.2f. \n", value);
+}
+
+Compile, complete  and execute this listing with a 165 pounds input. 
+
+Note down the result. $4234725.00
+
+Change the type of value to double. How does the result change? It doesn't
+
+Modify the program to round-off the result to 4 decimal points.
+
+      #include <stdio.h>
+      int main() {
+          float weight;
+          double value;
+          printf("Enter your weight in pounds: \n");
+          scanf("%f", &weight);
+          // Platinum is $1770 / pound
+          // 14.5 troy ounces in 1 pound
+          value = 1770.0 * weight * 14.5;
+          printf ("Your weight in platinum costs $%.4f. \n", value);
+
+Change the type of value to int. What is the result displayed for %f and %d? Explain the reason why. %f is for float, it displays $0.0000 but when changing to %d the output is now $4234725. THis is because %d is the format specifier for integers.
+
+What happens if the integer corresponds to an index for a non-printable character? With how the current code is, it would output an unknown symbol as you're multiplying a letter with 1770 and 14.5. Assuming you change the output to weight instead of value and declaring weight
+as integer and fixing scanf to %d, you would get the same thing as question 1 really.
+
+Modify the program further to display the corresponding index as octal and hex formatted integers.
+
+#include <stdio.h>
+      
+      int main() {
+          float weight;
+          int value;
+      
+          printf("Enter your weight in pounds: \n");
+          scanf("%f", &weight);
+      
+          // Platinum is $1770 / pound, 14.5 troy ounces in 1 pound
+          value = 1770 * weight * 14.5;
+      
+          printf("Your weight in platinum costs $%d.\n", value);
+      
+          // Display the value in octal and hexadecimal
+          printf("The corresponding index in octal is: %o.\n", value);
+          printf("The corresponding index in hexadecimal is: %x.\n", value);
+      
+          return 0;
+      }
+
