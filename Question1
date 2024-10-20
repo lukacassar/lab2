@@ -1,0 +1,9 @@
+#include <stdio.h>
+int input;
+int main(void) {
+    printf("Enter an integer \n");
+    scanf("%d", &input);
+
+    printf("The number \"%d\" corresponds to the character \"%c\"\n", input, input);
+    return 0;
+}
