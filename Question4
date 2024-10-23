@@ -3,29 +3,79 @@
 
 int main() {
 
-    char name[5][40], surname[5][40];
-    int age[5];
-    double salary[5];
+    void clr() {
+        int c;
+        // Discard remaining characters in the buffer, including newline
+        while ((c = getchar()) != '\n' && c != EOF);
+    }
+
+    char name[10][40], surname[10][40];
+    int age[10];
+    int precision;
+    double salary[10];
     for(int i = 0; i < 5; i++) {
         printf("Person %d\n", i + 1);
 
-        printf("What is your name\n");
-        scanf("%s", name[i]);
+        printf("Employee name\n");
+        scanf("%10s", name[i]);
+        clr();
 
-        printf("What is your surname\n");
-        scanf("%s", surname[i]);
+        printf("Employee surname\n");
+        scanf("%10s", surname[i]);
+        clr();
 
-        printf("How old are you?\n");
+        printf("Employee age?\n");
         scanf("%d", &age[i]);
 
-        printf("What is your monthly salary?\n");
+
+        printf("Employee monthly salary?\n");
         scanf("%lf", &salary[i]);
+
+        clr();
     }
 
-    printf("%s, %20s, %20s, %20s\n", "name", "surname", "age", "salary");
-    for(int i = 0; i < 5; i++) {
-        printf("%s %20s %20d %20lf\n", name[i], surname[i], age[i], salary[i]);
+    printf("Enter the number of decimal places for the salary: ");
+    scanf("%d", &precision);
+
+    printf("%-10s %20s %20s %10s %20s %20s\n", "Person", "Name", "Surname", "Age", "Salary", "13 Month Salary");
+    for (int i = 0; i < 5; i++) {
+        printf("%-10d %20s %20s %10d %20.*lf %20.*lf\n", i + 1, name[i], surname[i], age[i], precision, salary[i], precision, salary[i] * 13);
     }
 
+    for(int i = 5; i < 10; i++) {
+        printf("Person %d\n", i + 1);
+
+        printf("Employee name\n");
+        scanf("%10s", name[i]);
+        clr();
+
+        printf("Employee surname\n");
+        scanf("%10s", surname[i]);
+        clr();
+
+        printf("Employee age?\n");
+        scanf("%d", &age[i]);
+
+
+        printf("Employee monthly salary?\n");
+        scanf("%lf", &salary[i]);
+
+        clr();
+    }
+
+    printf("%-10s %20s %20s %10s %20s %20s\n", "Person", "Name", "Surname", "Age", "Salary", "13 Month Salary");
+    for (int i = 5; i < 10; i++) {
+        printf("%-10d %20s %20s %10d %20.*lf %20.*lf\n", i + 1, name[i], surname[i], age[i], precision, salary[i], precision, salary[i] * 13);
+    }
+
+    double avgmonth, avg13month;
+    for(int i = 0; i < 10; i++) {
+        avgmonth = avgmonth + salary[i];
+        avg13month = avg13month + (salary[i]*13);
+    }
+    avgmonth = avgmonth / 10;
+    avg13month = avg13month / 10;
+    printf("Average 1 month salary: %.*lf\n", precision, avgmonth);
+    printf("Average 13 month salary: %.*lf\n", precision, avg13month);
     return 0;
 }
