@@ -2,7 +2,8 @@
 #include <string.h>
 
 int main() {
-  int n,original, factorial = 1;
+  int n,original;
+  long long int factorial = 1;
   printf("Enter a number\n");
   scanf("%d", &n);
   original = n;
@@ -16,6 +17,6 @@ int main() {
     n--;
   }
 }
-  printf("Factorial of %d is %d", original, factorial);
+  printf("Factorial of %d is %lld", original, factorial);
     return 0;
 }
